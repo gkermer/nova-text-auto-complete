@@ -7,7 +7,7 @@
                 :error="hasError"
                 :data='availableItems'
                 v-model="value"
-                v-bind="extraAttributes"
+                :extra-attributes="extraAttributes"
             ></text-auto-complete>
         </template>
     </default-field>

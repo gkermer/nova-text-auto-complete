@@ -14,7 +14,8 @@
                 class="w-full form-control form-input form-input-bordered"
                 :tabindex="show ? -1 : 0"
                 type="text"
-                spellcheck="false" />
+                spellcheck="false"
+                v-bind="extraAttributes" />
         </div>
 
         <div v-if="show" ref="dropdown" class="form-input px-0 border border-60 absolute pin-t pin-l my-1 overflow-hidden" :style="{ width: inputWidth + 'px', zIndex: 2000 }">
