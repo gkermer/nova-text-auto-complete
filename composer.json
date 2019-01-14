@@ -1,0 +1,38 @@
+{
+    "name": "gkermer/nova-text-auto-complete",
+    "description": "A Laravel Nova text autocomplete field.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "text",
+        "autocomplete",
+        "auto-complete"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Kermer",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gkermer\\TextAutoComplete\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gkermer\\TextAutoComplete\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
