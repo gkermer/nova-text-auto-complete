@@ -14,15 +14,28 @@ class TextAutoComplete extends Text
     public $component = 'text-auto-complete';
 
     /**
+     * The items callback
+     *
+     * @var \Closure
+     */
+    public $itemsCallback;
+
+    /**
      * Set the options for the select menu.
      *
-     * @param  array  $options
+     * @param  mixed $items
      * @return $this
      */
     public function items($items)
     {
-        return $this->withMeta([
-            'items' => collect($items ?? [])->values()->all()
-        ]);
+        if ($items instanceof \Closure) {
+            $this->itemsCallback = $items;
+        } else {
+            $this->withMeta([
+                'items' => collect($items ?? [])->values()->all()
+            ]);
+        }
+
+        return $this;
     }
 }

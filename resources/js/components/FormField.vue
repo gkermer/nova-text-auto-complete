@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import storage from "../storage/TextItemStorage"
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import TextAutoComplete from "./TextAutoComplete";
 
@@ -37,7 +38,14 @@ export default {
                 return;
             }
 
-            this.availableItems = this.field.items.filter(item => item.toLowerCase().indexOf(trimmedSearch.toLowerCase()) > -1);;
+            if (this.field.items) {
+                this.availableItems = this.field.items.filter(item => item.toLowerCase().indexOf(trimmedSearch.toLowerCase()) > -1);
+            } else {
+                storage.fetchAvailableItems(this.resourceName, this.field.attribute, {params: {search: trimmedSearch}})
+                    .then(({data: items}) => {
+                        this.availableItems = items;
+                    });
+            }
         },
 
         /**
