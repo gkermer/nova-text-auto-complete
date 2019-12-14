@@ -8,7 +8,7 @@ class TextItemsController
 {
     public function index(NovaRequest $request)
     {
-        $field = $request->findResourceOrFail()
+        $field = $request->newResourceWith($request->findModelQuery()->first() ?? $request->model())
             ->availableFields($request)
             ->firstWhere('attribute', $request->field);
 
