@@ -1,7 +1,7 @@
 export default {
-    fetchAvailableItems(resourceName, fieldAttribute, params) {
+    fetchAvailableItems(resourceName, resourceId, fieldAttribute, params) {
         return Nova.request().get(
-            `/nova-vendor/text-auto-complete/${resourceName}/text-items/${fieldAttribute}`,
+            `/nova-vendor/text-auto-complete/${resourceName}/${resourceId}/text-items/${fieldAttribute}`,
             params
         )
     },

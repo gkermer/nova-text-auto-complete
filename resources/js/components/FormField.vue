@@ -19,6 +19,8 @@ import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import TextAutoComplete from "./TextAutoComplete";
 
 export default {
+    props: ['resourceId'],
+
     components: {TextAutoComplete},
 
     mixins: [FormField, HandlesValidationErrors],
@@ -41,7 +43,7 @@ export default {
             if (this.field.items) {
                 this.availableItems = this.field.items.filter(item => item.toLowerCase().indexOf(trimmedSearch.toLowerCase()) > -1);
             } else {
-                storage.fetchAvailableItems(this.resourceName, this.field.attribute, {params: {search: trimmedSearch}})
+                storage.fetchAvailableItems(this.resourceName, this.resourceId, this.field.attribute, {params: {search: trimmedSearch}})
                     .then(({data: items}) => {
                         this.availableItems = items;
                     });
