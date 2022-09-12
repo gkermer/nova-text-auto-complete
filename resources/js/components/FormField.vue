@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :errors="errors">
+    <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
         <template slot="field">
             <text-auto-complete
                 @input="performSearch"
